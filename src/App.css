@@ -49,28 +49,50 @@
 
 .event-display{
 
+  display:flex;
+  margin:auto;
+  max-width: auto;
+  overflow:auto;
+  height: auto; 
+  background:rgb(206, 198, 198);
+  border:2px solid rgb(32, 33, 34);
+  cursor: pointer;
+   
+}
+.event-display-desc   {
+  margin:30px;
+  width: 400px;
+  height: auto; 
+  
+  float: left;
+}
+/*
+.event-display{
+
   background-color: coral;
   margin: 10px;
   width: 500px;
   height: 100px;
   border: 1px solid;
   /* overflow: hidden; */
-  cursor: pointer;
+  /* cursor: pointer;
    
-}
+} */
+/*
 
 .event-display:hover {
   border: 1px solid #777;
  
 }
 
-.event-display-desc  h2 p {
+
+/* .event-display-desc  h2 p {
   display:flex;
   flex-direction: row;
   width: 300px;
   height: 100px; 
   border:5px solid rgb(32, 33, 34);
-}
+} */
 
 
 .event-display-desc {

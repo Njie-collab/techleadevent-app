@@ -10,14 +10,18 @@ const Cart = () => {
             <div>
                 hello
                 {
+                    localCart ? <div>
+                        <p>You got something in cart</p>
+                    </div> : 
                    
                     console.log(item)
-                   
+                    
                 }
+
             </div>
         ))
         :
-    <h3>
+        <h3>
 cart is empty
     </h3>
     }

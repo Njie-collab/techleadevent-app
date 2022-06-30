@@ -8,7 +8,14 @@ const Nav = () => {
     <nav className="main-nav">
         {/* <NavLinks/> */}
        
-        <h3>Logo</h3>
+      <NavLink
+        to="/events"
+        style={({ isActive }) => {
+          return { color: isActive && "green" };
+        }} >
+          <h3>Logo</h3>
+            
+      </NavLink>
       <NavLink
         to="/"
         style={({ isActive }) => {
