@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-// import SearchEvents from "./SearchEvents"
-// const api_key="https://tlv-events-app.herokuapp.com/events/uk/london"
+
 import NewSearchbar from "./NewSearchbar";
 import Button from "@mui/material/Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Events = () => {
   const [eventinfo, setEventinfo] = useState(null);
-
+  const [cart, setCart] = useState([]);
   // const[time,setime]=useState("")
 
   const handleDelete = (id) => {
@@ -14,15 +14,22 @@ const Events = () => {
     setEventinfo(newEvents);
   };
 
-  const addToCart = (item) => {
-    const cart = localStorage.getItem("cart");
-    if (cart) {
-      const updatedCart = cart.split(",").push(item);
-      localStorage.setItem("cart", updatedCart);
-    } else {
-      localStorage.setItem("cart", [item]);
-    }
+  const addItemsToCart = (item) => {
+    console.log("====================================");
+    console.log("This your shopping Cart");
+
+    setCart([...cart, item]);
   };
+
+  // const addToCart = (item) => {
+  //   const cart = localStorage.getItem("cart");
+  //   if (cart) {
+  //     const updatedCart = cart.split(",").push(item);
+  //     localStorage.setItem("cart", updatedCart);
+  //   } else {
+  //     localStorage.setItem("cart", [item]);
+  //   }
+  // };
   useEffect(() => {
     fetch(process.env.REACT_APP_MY_API)
       // fetch("https://tlv-events-app.herokuapp.com/events/uk/london")
@@ -38,8 +45,14 @@ const Events = () => {
   return (
     <div className="event-display">
       <div className="serach-filter">
-      <h2>Search Your Events</h2>
+        <h2>Search Your Events</h2>
         <NewSearchbar eventinfo={eventinfo} />
+        
+        <h2>
+          <Button variant="contained" color="secondary" eventinfo={eventinfo}>
+            <ShoppingCartIcon />+ {cart.length}
+          </Button>
+        </h2>
       </div>
       {eventinfo &&
         eventinfo.map((item) => {
@@ -71,10 +84,17 @@ const Events = () => {
                 <Button
                   variant="contained"
                   eventinfo={eventinfo}
-                  onClick={() => addToCart(item)}
+                  onClick={() => addItemsToCart(item)}
                 >
                   AddToCart
                 </Button>
+                {/* <Button
+                  variant="contained"
+                  eventinfo={eventinfo}
+                  onClick={() => addToCart(item)}
+                >
+                  AddToCart
+                </Button> */}
               </div>
             </div>
           );

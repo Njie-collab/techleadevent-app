@@ -1,17 +1,25 @@
 import { useState} from 'react'
+import Button from "@mui/material/Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-const Cart = () => {
-    const [localCart, setlocalCart]= useState(localStorage.getItem("cart"))
+const Cart = ({eventinfo,cart}) => {
+    // const [localCart, setlocalCart]= useState(localStorage.getItem("cart"))
+
+
 
     
   return (
     <div>
-        {localCart ? localCart.split(",").map((item)=>(
+      <Button variant="contained" color="secondary" eventinfo={eventinfo}>
+        <ShoppingCartIcon />+ 
+      </Button>
+
+      {/* {localCart ? localCart.split(",").map((item)=>(
             <div>
                 hello
                 {
                     localCart ? <div>
-                        <p>You got something in cart</p>
+                        <button >{localCart.length}You got something in cart</button>
                     </div> : 
                    
                     console.log(item)
@@ -24,9 +32,9 @@ const Cart = () => {
         <h3>
 cart is empty
     </h3>
-    }
+    } */}
     </div>
-  )
+  );
 }
 
 export default Cart
